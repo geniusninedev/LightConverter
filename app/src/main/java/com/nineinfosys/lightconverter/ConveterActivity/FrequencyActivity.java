@@ -31,6 +31,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.nineinfosys.lightconverter.ConveterActivityList.ConversionFrequencyListActivity;
 import com.nineinfosys.lightconverter.Engin.FrequencyConverter;
 import com.nineinfosys.lightconverter.R;
@@ -79,7 +82,10 @@ public class FrequencyActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setTitle("Frequency Wavelength");
         formatsetting();
 
-
+        MobileAds.initialize(FrequencyActivity.this, getString(R.string.ads_app_id));
+        AdView mAdView = (AdView) findViewById(R.id.adViewUnitConverter);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
         //keyboard hidden first time

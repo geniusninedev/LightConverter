@@ -31,6 +31,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.nineinfosys.lightconverter.ConveterActivityList.ConversionLuminousIntensityListActivity;
 import com.nineinfosys.lightconverter.Engin.LuminousIntensity;
 import com.nineinfosys.lightconverter.R;
@@ -76,6 +79,11 @@ public class LuminousIntensityActivity extends AppCompatActivity implements View
         getSupportActionBar().setTitle("Luminous Intensity ");
 
         formatsetting();
+
+        MobileAds.initialize(LuminousIntensityActivity.this, getString(R.string.ads_app_id));
+        AdView mAdView = (AdView) findViewById(R.id.adViewUnitConverter);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         //keyboard hidden first time
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

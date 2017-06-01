@@ -31,6 +31,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.nineinfosys.lightconverter.ConveterActivityList.ConversionDigitalImageResolutionListActivity;
 import com.nineinfosys.lightconverter.Engin.DigitalImageResolutionConverter;
 import com.nineinfosys.lightconverter.R;
@@ -76,6 +79,10 @@ public class DigitalImageResolutionActivity extends AppCompatActivity implements
 
         formatsetting();
 
+        MobileAds.initialize(DigitalImageResolutionActivity.this, getString(R.string.ads_app_id));
+        AdView mAdView = (AdView) findViewById(R.id.adViewUnitConverter);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         //keyboard hidden first time
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
